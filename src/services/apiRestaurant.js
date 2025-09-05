@@ -1,4 +1,4 @@
-const API_URL = 'https://react-fast-pizza-api.onrender.com/api';
+const API_URL = "https://react-fast-pizza-api.jonas.io/api";
 
 export async function getMenu() {
   const res = await fetch(`${API_URL}/menu`);
@@ -9,6 +9,9 @@ export async function getMenu() {
   const { data } = await res.json();
   return data;
 }
+
+
+
 
 export async function getOrder(id) {
   const res = await fetch(`${API_URL}/order/${id}`);
