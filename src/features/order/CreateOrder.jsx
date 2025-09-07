@@ -37,7 +37,6 @@ function CreateOrder() {
   const navigation = useNavigation();
 
   const formErrors = useActionData();
-  console.log(formErrors);
   // const [withPriority, setWithPriority] = useState(false);
   const cart = fakeCart;
 
@@ -97,7 +96,6 @@ export async function action({ request }) {
     priority: data.priority === "on" ? true : false,
   };
   const newOrder = await createOrder(order);
-  console.log(order);
 
   const errors = {};
 

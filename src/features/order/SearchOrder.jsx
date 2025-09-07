@@ -13,6 +13,7 @@ function SearchOrder() {
   return (
     <form onSubmit={handleSubmit}>
       <input
+      className="bg-white"
         placeholder="Search"
         value={quary}
         onChange={(e) => setQuary(e.target.value)}
