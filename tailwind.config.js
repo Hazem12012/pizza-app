@@ -1,8 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/**/*.{html,js}', './index.html', './src/**/*.{js,jsx}'],
+  content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
+
   theme: {
-    extend: {},
+    fontFamily: {
+      pizza: ['Roboto', 'sans-serif'],
+    },
+
+    extend: {
+      colors: {
+        pizza: '#000000',
+      },
+    },
   },
   plugins: [],
 };
