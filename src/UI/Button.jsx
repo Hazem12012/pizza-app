@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-function Button({ children, disabled, to, type }) {
+function Button({ children, disabled, to, type, onClick }) {
   const pase =
     'inline-block text-sm cursor-pointer rounded-full bg-yellow-400  font-semibold tracking-wide text-stone-800 uppercase transition-colors duration-300 hover:bg-yellow-300 hover:text-stone-500 focus:ring focus:ring-yellow-300 focus:ring-offset-2 focus:outline-none focus:bg-yellow-300 ';
   const styles = {
@@ -17,8 +17,23 @@ function Button({ children, disabled, to, type }) {
       </Link>
     );
   }
+  if (onClick) {
+    return (
+      <button
+        disabled={disabled || false}
+        className={styles[type]}
+        onClick={onClick}
+      >
+        {children}
+      </button>
+    );
+  }
   return (
-    <button disabled={disabled || false} className={styles[type]}>
+    <button
+      disabled={disabled || false}
+      className={styles[type]}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
