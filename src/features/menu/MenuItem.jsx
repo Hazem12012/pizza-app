@@ -1,19 +1,22 @@
 import { formatCurrency } from '../../utilities/helpers';
 import Button from '../../UI/Button';
-import { addItem } from '../cart/cartSlice';
-import { useDispatch } from 'react-redux';
+import { addItem, getCurrentQuantityById } from '../cart/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import DeleteItem from './../cart/DeleteItem';
+import UpdateItemQuanity from '../cart/UpdateItemQuanity';
 
 function MenuItem({ pizza }) {
-  const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
   const dispatch = useDispatch();
-
+  const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
+  const getCurrentQuantity = useSelector(getCurrentQuantityById(id));
+  const isInCart = getCurrentQuantity > 0;
   function handleAddToCart() {
     const newItem = {
       pizzaId: id,
       name,
       quantity: 1,
       unitPrice,
-      totalPrice: unitPrice + 1,
+      totalPrice: unitPrice,
     };
     dispatch(addItem(newItem));
   }
@@ -26,10 +29,10 @@ function MenuItem({ pizza }) {
       />
       <div className="flex grow flex-col pt-0.5">
         <p className="font-medium">{name}</p>
-        <p className="text-sm text-stone-500 capitalize italic">
-          {ingredients.join(', ')}
+        <p className="mt-2 text-sm text-stone-500 capitalize italic">
+          {ingredients.join(' , ')}
         </p>
-        <div className="flex items-center justify-between">
+        <div className="mt-3 flex items-center justify-between">
           {!soldOut ? (
             <p className="text-sm">{formatCurrency(unitPrice)}</p>
           ) : (
@@ -37,7 +40,14 @@ function MenuItem({ pizza }) {
               Sold out
             </p>
           )}
-          {!soldOut && (
+
+          {isInCart && (
+            <>
+              <UpdateItemQuanity  pizzaId={id}/>
+              <DeleteItem pizzaId={id} />
+            </>
+          )}
+          {!soldOut && !isInCart && (
             <Button type="small" onClick={handleAddToCart}>
               Add to cart
             </Button>
