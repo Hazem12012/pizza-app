@@ -22,6 +22,7 @@ function Button({ children, disabled, to, type, onClick }) {
     return (
       <button
         disabled={disabled || false}
+        
         className={styles[type]}
         onClick={onClick}
       >
