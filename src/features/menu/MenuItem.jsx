@@ -43,10 +43,13 @@ function MenuItem({ pizza }) {
           )}
 
           {isInCart && (
-            <>
-              <UpdateItemQuanity pizzaId={id} currentQuantity={getCurrentQuantity} />
-              <DeleteItem pizzaId={id}  />
-            </>
+            <div className="flex items-center gap-3 sm:gap-8">
+              <UpdateItemQuanity
+                pizzaId={id}
+                currentQuantity={getCurrentQuantity}
+              />
+              <DeleteItem pizzaId={id} />
+            </div>
           )}
           {!soldOut && !isInCart && (
             <Button type="small" onClick={handleAddToCart}>
