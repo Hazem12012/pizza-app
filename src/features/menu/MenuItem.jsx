@@ -51,6 +51,7 @@ function MenuItem({ pizza }) {
               <DeleteItem pizzaId={id} />
             </div>
           )}
+
           {!soldOut && !isInCart && (
             <Button type="small" onClick={handleAddToCart}>
               Add to cart

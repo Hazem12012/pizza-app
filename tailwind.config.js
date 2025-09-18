@@ -11,6 +11,9 @@ export default {
       colors: {
         pizza: '#000000',
       },
+      screens: {
+        'tablet-range': { min: '640px', max: '768px' },
+      },
     },
   },
   plugins: [],
