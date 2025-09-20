@@ -173,7 +173,6 @@ export async function action({ request }) {
       'please give us your correct phone number, We might need it to call you.';
   }
 
-  console.log(order);
   
   const newOrder = await createOrder(order);
 
